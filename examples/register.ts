@@ -14,7 +14,9 @@ config();
 
     // you only need to register once
     const result = await universalAccount.register(invitationCode);
-    if (!!result) {
+    if (!!result.token) {
         console.log("register success");
+    } else {
+        console.log("register failed", result);
     }
 })();
