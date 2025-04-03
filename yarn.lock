@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@GDdark/universal-account@^0.0.6":
-  version "0.0.6"
-  resolved "https://npm.pkg.github.com/download/@GDdark/universal-account/0.0.6/14d4acfca21c53b60cac19395e14011ee0d8d925#14d4acfca21c53b60cac19395e14011ee0d8d925"
-  integrity sha512-A1SzHyLrcSX+CcC8z/dXyizh7+Xj8txkDhxJvkSNgTDz1MfqIH2XP5DsAECuVYPTUPYS5964k/wx5RsMNv9rkQ==
+"@GDdark/universal-account@^1.0.0":
+  version "1.0.0"
+  resolved "https://npm.pkg.github.com/download/@GDdark/universal-account/1.0.0/c3166560d4550be8a2b73921fcae23911a7aa4c6#c3166560d4550be8a2b73921fcae23911a7aa4c6"
+  integrity sha512-dyvLx0Q63K+Ys21PlOHQ6vRtZkszatUkCfnQSjSV985Iq3V796ZVpljGRGdNxBn+DnkCBOMxX5EujxIWPhRBcQ==
   dependencies:
     "@ethersproject/bytes" "^5.8.0"
     "@solana/web3.js" "^1.98.0"

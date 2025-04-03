@@ -10,7 +10,7 @@
     "typescript": "^5.8.2"
   },
   "dependencies": {
-    "@GDdark/universal-account": "^0.0.6",
+    "@GDdark/universal-account": "^1.0.0",
     "dotenv": "^16.4.7"
   }
 }
