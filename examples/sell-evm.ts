@@ -1,12 +1,14 @@
 import { config } from "dotenv";
 import { CHAIN_ID, UniversalAccount } from "@GDdark/universal-account";
+import { getBytes, Wallet } from "ethers";
 
 config();
 
 (async () => {
+    const wallet = new Wallet(process.env.PRIVATE_KEY || "");
     const universalAccount = new UniversalAccount({
         projectId: process.env.PROJECT_ID || "",
-        privateKey: process.env.PRIVATE_KEY || "",
+        ownerAddress: wallet.address,
     });
 
     const smartAccountOptions = await universalAccount.getSmartAccountOptions();
@@ -22,7 +24,7 @@ config();
 
     console.log("sell transaction", transaction);
 
-    const sendResult = await universalAccount.sendTransaction(transaction);
+    const sendResult = await universalAccount.sendTransaction(transaction, wallet.signMessageSync(getBytes(transaction.rootHash)));
 
     console.log("sendResult", sendResult);
     console.log("explorer url", `https://universalx.app/activity/details?id=${sendResult.transactionId}`);

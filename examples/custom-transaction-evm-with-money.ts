@@ -1,13 +1,15 @@
 import { config } from "dotenv";
 import { CHAIN_ID, SUPPORTED_TOKEN_TYPE, UniversalAccount } from "@GDdark/universal-account";
-import { Interface, parseEther, toBeHex } from "ethers";
+import { getBytes, Interface, parseEther, toBeHex } from "ethers";
+import { Wallet } from "ethers";
 
 config();
 
 (async () => {
+    const wallet = new Wallet(process.env.PRIVATE_KEY || "");
     const universalAccount = new UniversalAccount({
         projectId: process.env.PROJECT_ID || "",
-        privateKey: process.env.PRIVATE_KEY || "",
+        ownerAddress: wallet.address,
     });
 
     const smartAccountOptions = await universalAccount.getSmartAccountOptions();
@@ -17,7 +19,7 @@ config();
     /**
      * Contract Code On Base Mainnet:
      * This function is payable, so it needs to pay money.
-     * 
+     *
      * function checkIn() public payable {
      *     require(msg.value == 0.0000001 ether, 'CheckIn: Insufficient ETH');
      *     emit Checked(msg.sender);
@@ -47,7 +49,7 @@ config();
 
     console.log("transaction", transaction);
 
-    const sendResult = await universalAccount.sendTransaction(transaction);
+    const sendResult = await universalAccount.sendTransaction(transaction, wallet.signMessageSync(getBytes(transaction.rootHash)));
 
     console.log("sendResult", sendResult);
     console.log("explorer url", `https://universalx.app/activity/details?id=${sendResult.transactionId}`);

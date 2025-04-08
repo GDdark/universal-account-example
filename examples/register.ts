@@ -1,19 +1,29 @@
 import { config } from "dotenv";
-import { UniversalAccount } from "@GDdark/universal-account";
+import { UniversalAccount, createUnsignedMessage } from "@GDdark/universal-account";
+import { Wallet } from "ethers";
+import { randomUUID } from "node:crypto";
 
 config();
 
 (async () => {
+    const wallet = new Wallet(process.env.PRIVATE_KEY || "");
     const universalAccount = new UniversalAccount({
         projectId: process.env.PROJECT_ID || "",
-        privateKey: process.env.PRIVATE_KEY || "",
+        ownerAddress: wallet.address,
     });
 
     // this is optional
     const invitationCode = "000000";
 
     // you only need to register once
-    const result = await universalAccount.register(invitationCode);
+    const smartAccountOptions = await universalAccount.getSmartAccountOptions();
+
+    const deviceId = randomUUID();
+    const timestamp = Date.now();
+    const message = createUnsignedMessage(smartAccountOptions.smartAccountAddress as string, deviceId, timestamp);
+    const signature = wallet.signMessageSync(message);
+
+    const result = await universalAccount.register(invitationCode, deviceId, timestamp, signature);
     if (!!result.token) {
         console.log("register success");
     } else {
