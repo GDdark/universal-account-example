@@ -26,7 +26,7 @@ config();
         ],
         transactions: [serializeInstruction(SystemProgram.transfer({
             fromPubkey: new PublicKey(smartAccountOptions.solanaSmartAccountAddress as string),
-            toPubkey: new PublicKey('KqdS34NGUHRigqWMMgvxajATqyidsoN6ZRsgVJCt1wG'),
+            toPubkey: new PublicKey('7uY2Mh8fLasPfQ4CFKLMP7X26e51B67cKjjyq7wod8Hm'),
             lamports: 0.000001 * LAMPORTS_PER_SOL,
         }))],
     });
