@@ -17,7 +17,7 @@ config();
     const transaction = await universalAccount.createUniversalTransaction({
         chainId: CHAIN_ID.SOLANA_MAINNET,
         // expect you need 0.000001 SOL on solana mainnet
-        // if your money(USDC, USDT, SOL, etc.) is on other chain, will convert to SOL on solana mainnet
+        // if your money(USDC, USDT, ETH, etc.) is on other chain, will convert to SOL on solana mainnet
         expectTokens: [
             {
                 type: SUPPORTED_TOKEN_TYPE.SOL,
