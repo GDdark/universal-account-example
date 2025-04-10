@@ -6,11 +6,12 @@
   "author": "GDdark <huangdongxc@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "@types/node": "^20.11.24",
     "ts-node": "^10.9.2",
-    "typescript": "^5.8.2"
+    "typescript": "^5.3.3"
   },
   "dependencies": {
-    "@GDdark/universal-account": "^1.0.4",
+    "@GDdark/universal-account": "^1.0.6",
     "dotenv": "^16.4.7",
     "ethers": "^6.13.5"
   }
