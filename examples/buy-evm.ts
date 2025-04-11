@@ -1,5 +1,5 @@
 import { config } from "dotenv";
-import { CHAIN_ID, UniversalAccount } from "@GDdark/universal-account";
+import { CHAIN_ID, UniversalAccount } from  "@GDdark/universal-account";
 import { getBytes, Wallet } from "ethers";
 
 config();
