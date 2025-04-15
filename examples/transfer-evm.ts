@@ -1,14 +1,17 @@
-import { config } from "dotenv";
-import { CHAIN_ID, UniversalAccount } from "@GDdark/universal-account";
-import { getBytes, Wallet } from "ethers";
+import { config } from 'dotenv';
+import { CHAIN_ID, UniversalAccount } from '@GDdark/universal-account';
+import { getBytes, Wallet } from 'ethers';
 
 config();
 
 (async () => {
-    const wallet = new Wallet(process.env.PRIVATE_KEY || "");
+    const wallet = new Wallet(process.env.PRIVATE_KEY || '');
     const universalAccount = new UniversalAccount({
-        projectId: process.env.PROJECT_ID || "",
+        projectId: process.env.PROJECT_ID || '',
         ownerAddress: wallet.address,
+        tradeConfig: {
+            universalGas: true,
+        },
     });
 
     const smartAccountOptions = await universalAccount.getSmartAccountOptions();
@@ -16,18 +19,18 @@ config();
     console.log('Your UA Solana Address:', smartAccountOptions.solanaSmartAccountAddress);
 
     const transaction = await universalAccount.createTransferTransaction({
-        token: { chainId: CHAIN_ID.ARBITRUM_MAINNET_ONE, address: "0x912CE59144191C1204E64559FE8253a0e49E6548" },
-        amount: "0.0001",
+        token: { chainId: CHAIN_ID.ARBITRUM_MAINNET_ONE, address: '0x912CE59144191C1204E64559FE8253a0e49E6548' },
+        amount: '0.0001',
         // the rpc url of the chain you want to transfer to, here is arbitrum mainnet
-        rpcUrl: "https://arb1.arbitrum.io/rpc",
+        rpcUrl: 'https://arb1.arbitrum.io/rpc',
         // the receiver address
-        receiver: "0x98F4c42009dc2CC8797b3f4bE2C59d98278D675A",
+        receiver: '0x98F4c42009dc2CC8797b3f4bE2C59d98278D675A',
     });
 
-    console.log("transfer transaction", transaction);
+    console.log('transfer transaction', transaction);
 
     const sendResult = await universalAccount.sendTransaction(transaction, wallet.signMessageSync(getBytes(transaction.rootHash)));
 
-    console.log("sendResult", sendResult);
-    console.log("explorer url", `https://universalx.app/activity/details?id=${sendResult.transactionId}`);
+    console.log('sendResult', sendResult);
+    console.log('explorer url', `https://universalx.app/activity/details?id=${sendResult.transactionId}`);
 })();

@@ -1,14 +1,17 @@
-import { config } from "dotenv";
-import { CHAIN_ID, UniversalAccount } from "@GDdark/universal-account";
-import { getBytes, Wallet } from "ethers";
+import { config } from 'dotenv';
+import { CHAIN_ID, UniversalAccount } from '@GDdark/universal-account';
+import { getBytes, Wallet } from 'ethers';
 
 config();
 
 (async () => {
-    const wallet = new Wallet(process.env.PRIVATE_KEY || "");
+    const wallet = new Wallet(process.env.PRIVATE_KEY || '');
     const universalAccount = new UniversalAccount({
-        projectId: process.env.PROJECT_ID || "",
+        projectId: process.env.PROJECT_ID || '',
         ownerAddress: wallet.address,
+        tradeConfig: {
+            universalGas: true,
+        },
     });
 
     const smartAccountOptions = await universalAccount.getSmartAccountOptions();
@@ -20,17 +23,17 @@ config();
         // so here we transfer solana native token to the receiver address
         token: { chainId: CHAIN_ID.SOLANA_MAINNET, address: '0x0000000000000000000000000000000000000000' },
         // transfer 0.000001 solana native token
-        amount: "0.000001",
+        amount: '0.000001',
         // the rpc url of the chain you want to transfer to, here is solana mainnet
-        rpcUrl: "https://api.mainnet-beta.solana.com",
+        rpcUrl: 'https://api.mainnet-beta.solana.com',
         // the receiver address, it must be a solana address
         receiver: 'GRHXQJsDHzc9J9trV6aThaH2V924yTra9aFa8MdpUDux',
     });
 
-    console.log("transfer transaction", transaction);
+    console.log('transfer transaction', transaction);
 
     const sendResult = await universalAccount.sendTransaction(transaction, wallet.signMessageSync(getBytes(transaction.rootHash)));
 
-    console.log("sendResult", sendResult);
-    console.log("explorer url", `https://universalx.app/activity/details?id=${sendResult.transactionId}`);
+    console.log('sendResult', sendResult);
+    console.log('explorer url', `https://universalx.app/activity/details?id=${sendResult.transactionId}`);
 })();
