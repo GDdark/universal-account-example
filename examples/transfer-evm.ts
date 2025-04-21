@@ -21,8 +21,6 @@ config();
     const transaction = await universalAccount.createTransferTransaction({
         token: { chainId: CHAIN_ID.ARBITRUM_MAINNET_ONE, address: '0x912CE59144191C1204E64559FE8253a0e49E6548' },
         amount: '0.0001',
-        // the rpc url of the chain you want to transfer to, here is arbitrum mainnet
-        rpcUrl: 'https://arb1.arbitrum.io/rpc',
         // the receiver address
         receiver: '0x98F4c42009dc2CC8797b3f4bE2C59d98278D675A',
     });

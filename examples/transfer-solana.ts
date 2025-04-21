@@ -24,8 +24,6 @@ config();
         token: { chainId: CHAIN_ID.SOLANA_MAINNET, address: '0x0000000000000000000000000000000000000000' },
         // transfer 0.000001 solana native token
         amount: '0.000001',
-        // the rpc url of the chain you want to transfer to, here is solana mainnet
-        rpcUrl: 'https://api.mainnet-beta.solana.com',
         // the receiver address, it must be a solana address
         receiver: 'GRHXQJsDHzc9J9trV6aThaH2V924yTra9aFa8MdpUDux',
     });
