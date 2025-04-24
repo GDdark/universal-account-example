@@ -1,6 +1,6 @@
 import { config } from "dotenv";
-import { CHAIN_ID, UniversalAccount } from  "@GDdark/universal-account";
-import { getBytes, Wallet } from "ethers";
+import { CHAIN_ID, UniversalAccount } from "@GDdark/universal-account";
+import { formatUnits, getBytes, Wallet } from "ethers";
 
 config();
 
@@ -14,12 +14,12 @@ config();
             slippageBps: 100, // 100 means 1%, max is 10000
             // use parti to pay fee
             universalGas: true,
-        }
+        },
     });
 
     const smartAccountOptions = await universalAccount.getSmartAccountOptions();
-    console.log('Your UA EVM Address:', smartAccountOptions.smartAccountAddress);
-    console.log('Your UA Solana Address:', smartAccountOptions.solanaSmartAccountAddress);
+    console.log("Your UA EVM Address:", smartAccountOptions.smartAccountAddress);
+    console.log("Your UA Solana Address:", smartAccountOptions.solanaSmartAccountAddress);
 
     // here is example to buy arb, if you want to buy native token, the address is 0x0000000000000000000000000000000000000000
     const transaction = await universalAccount.createBuyTransaction({
@@ -29,6 +29,13 @@ config();
     });
 
     console.log("buy transaction", transaction);
+
+    const feeQuote = transaction.feeQuotes[0];
+    const fee = feeQuote.fees.totals;
+    console.log("total fee in usd:", `$${formatUnits(fee.feeTokenAmountInUSD, 18)}`);
+    console.log("gas fee in usd:", `$${formatUnits(fee.gasFeeTokenAmountInUSD, 18)}`);
+    console.log("service fee in usd:", `$${formatUnits(fee.transactionServiceFeeTokenAmountInUSD, 18)}`);
+    console.log("lp fee in usd:", `$${formatUnits(fee.transactionLPFeeTokenAmountInUSD, 18)}`);
 
     const sendResult = await universalAccount.sendTransaction(transaction, wallet.signMessageSync(getBytes(transaction.rootHash)));
 
