@@ -1,5 +1,5 @@
 import { config } from "dotenv";
-import { CHAIN_ID, UniversalAccount } from "@GDdark/universal-account";
+import { CHAIN_ID, UA_TRANSACTION_STATUS, UniversalAccount } from "@GDdark/universal-account";
 import { formatUnits, getBytes, Wallet } from "ethers";
 
 config();
@@ -41,4 +41,14 @@ config();
 
     console.log("sendResult", sendResult);
     console.log("explorer url", `https://universalx.app/activity/details?id=${sendResult.transactionId}`);
+
+    // wait for transaction to be confirmed
+    for (let index = 0; index < 10; index++) {
+        const transactionDetail = await universalAccount.getTransaction(sendResult.transactionId);
+        if (transactionDetail.status === UA_TRANSACTION_STATUS.FINISHED) {
+            console.log("transaction confirmed");
+            break;
+        }
+        await new Promise(resolve => setTimeout(resolve, 1000));
+    }
 })();
