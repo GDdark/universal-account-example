@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@GDdark/universal-account@^1.0.13":
-  version "1.0.13"
-  resolved "https://npm.pkg.github.com/download/@GDdark/universal-account/1.0.13/82e70fe6726955759ee9f0adb26acfa50f9d3573#82e70fe6726955759ee9f0adb26acfa50f9d3573"
-  integrity sha512-1I725wvmPBsVBKAr1GswHlnMxFp/FDoRbBfnrGugxIAHV/MHpY4PnIoe67snJtXi9/c6tM4upnA4plugigc9dA==
+"@GDdark/universal-account@^1.0.15":
+  version "1.0.15"
+  resolved "https://npm.pkg.github.com/download/@GDdark/universal-account/1.0.15/73c2b968143e490a61df27042e9a7f427e25dc2a#73c2b968143e490a61df27042e9a7f427e25dc2a"
+  integrity sha512-4IgBmysPRqCnZqdq3w5VxJf23kC9Act0Y2PmxtkosOXYUYZsrLJqyh3hIS1zDAC8hAuyiM10ptNqM+fNelsNZw==
   dependencies:
     "@coral-xyz/anchor" "^0.30.1"
     "@noble/hashes" "^1.7.1"
