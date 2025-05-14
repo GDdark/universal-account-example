@@ -1,5 +1,5 @@
 import { config } from 'dotenv';
-import { CHAIN_ID, UniversalAccount } from '@particle-network/universal-account-sdk';
+import { CHAIN_ID, SUPPORTED_TOKEN_TYPE, UniversalAccount } from '@particle-network/universal-account-sdk';
 import { getBytes, Wallet } from 'ethers';
 
 config();
@@ -18,17 +18,12 @@ config();
     console.log('Your UA EVM Address:', smartAccountOptions.smartAccountAddress);
     console.log('Your UA Solana Address:', smartAccountOptions.solanaSmartAccountAddress);
 
-    const transaction = await universalAccount.createTransferTransaction({
-        // 0x0000000000000000000000000000000000000000 means native token
-        // so here we transfer solana native token to the receiver address
-        token: { chainId: CHAIN_ID.SOLANA_MAINNET, address: '0x0000000000000000000000000000000000000000' },
-        // transfer 0.000001 solana native token
-        amount: '0.000001',
-        // the receiver address, it must be a solana address
-        receiver: 'GRHXQJsDHzc9J9trV6aThaH2V924yTra9aFa8MdpUDux',
+    const transaction = await universalAccount.createConvertTransaction({
+        expectToken: { type: SUPPORTED_TOKEN_TYPE.USDC, amount: '0.0001' },
+        chainId: CHAIN_ID.SOLANA_MAINNET,
     });
 
-    console.log('transfer transaction', transaction);
+    console.log('convert transaction', transaction);
 
     const sendResult = await universalAccount.sendTransaction(transaction, wallet.signMessageSync(getBytes(transaction.rootHash)));
 
