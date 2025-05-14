@@ -31,7 +31,7 @@ npm manifest:
       "typescript": "^5.3.3"
     },
     "dependencies": {
-      "@GDdark/universal-account": "^1.0.13",
+      "@particle-network/universal-account-sdk": "^1.0.13",
       "dotenv": "^16.4.7",
       "ethers": "^6.13.5"
     }
@@ -45,9 +45,9 @@ Lockfile:
   # yarn lockfile v1
   
   
-  "@GDdark/universal-account@^1.0.12":
+  "@particle-network/universal-account-sdk@^1.0.12":
     version "1.0.12"
-    resolved "https://npm.pkg.github.com/download/@GDdark/universal-account/1.0.12/03d8a6e67d15357ef96a0fdc61132ec97df555b4#03d8a6e67d15357ef96a0fdc61132ec97df555b4"
+    resolved "https://npm.pkg.github.com/download/@particle-network/universal-account-sdk/1.0.12/03d8a6e67d15357ef96a0fdc61132ec97df555b4#03d8a6e67d15357ef96a0fdc61132ec97df555b4"
     integrity sha512-sjJI5hoWzSVPLikke9Jk7oHq2s8upR1lrW3JX5NVs2WC9pKTUw95IJ0WJbK2xY2N06Hzcua417KOE7mK5kZW8Q==
     dependencies:
       "@coral-xyz/anchor" "^0.30.1"

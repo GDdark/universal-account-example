@@ -1,5 +1,5 @@
 import { config } from "dotenv";
-import { CHAIN_ID, serializeInstruction, UniversalAccount } from "@GDdark/universal-account";
+import { CHAIN_ID, serializeInstruction, UniversalAccount } from "@particle-network/universal-account-sdk";
 import { PublicKey, TransactionInstruction } from "@solana/web3.js";
 import { getBytes, Wallet } from "ethers";
 config();

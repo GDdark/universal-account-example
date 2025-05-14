@@ -1,5 +1,5 @@
 import { config } from "dotenv";
-import { UniversalAccount, createUnsignedMessage } from "@GDdark/universal-account";
+import { UniversalAccount, createUnsignedMessage } from "@particle-network/universal-account-sdk";
 import { Wallet } from "ethers";
 import { randomUUID } from "node:crypto";
 

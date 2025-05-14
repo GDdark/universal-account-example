@@ -1,5 +1,5 @@
 import { config } from 'dotenv';
-import { CHAIN_ID, SUPPORTED_TOKEN_TYPE, UniversalAccount } from '@GDdark/universal-account';
+import { CHAIN_ID, SUPPORTED_TOKEN_TYPE, UniversalAccount } from '@particle-network/universal-account-sdk';
 import { getBytes, Wallet } from 'ethers';
 
 config();
