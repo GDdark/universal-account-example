@@ -1,5 +1,5 @@
 import { config } from "dotenv";
-import { CHAIN_ID, UA_TRANSACTION_STATUS, UniversalAccount } from "@particle-network/universal-account-sdk";
+import { CHAIN_ID, UA_TRANSACTION_STATUS, UniversalAccount, SUPPORTED_TOKEN_TYPE } from "@particle-network/universal-account-sdk";
 import { formatUnits, getBytes, Wallet } from "ethers";
 
 config();
@@ -14,6 +14,8 @@ config();
             slippageBps: 100, // 100 means 1%, max is 10000
             // use parti to pay fee
             universalGas: true,
+            // can use specific token to pay
+            usePrimaryTokens: [SUPPORTED_TOKEN_TYPE.USDC]
         },
     });
 
