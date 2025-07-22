@@ -7,6 +7,8 @@ config();
     const wallet = new Wallet(process.env.PRIVATE_KEY || "");
     const universalAccount = new UniversalAccount({
         projectId: process.env.PROJECT_ID || "",
+        projectClientKey: process.env.PROJECT_CLIENT_KEY || "",
+        projectAppUuid: process.env.PROJECT_APP_UUID || "",
         ownerAddress: wallet.address,
         tradeConfig: {
             // if this is not set, will use auto slippage

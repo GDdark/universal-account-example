@@ -10,6 +10,8 @@ config();
     const universalAccount = new UniversalAccount({
         projectId: process.env.PROJECT_ID || "",
         ownerAddress: wallet.address,
+        projectClientKey: process.env.PROJECT_CLIENT_KEY || "",
+        projectAppUuid: process.env.PROJECT_APP_UUID || "",
     });
 
     // this is optional
