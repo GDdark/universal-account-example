@@ -11,7 +11,7 @@
     "typescript": "^5.3.3"
   },
   "dependencies": {
-    "@particle-network/universal-account-sdk": "1.0.3",
+    "@particle-network/universal-account-sdk": "1.0.5",
     "dotenv": "^16.4.7",
     "ethers": "^6.13.5"
   }

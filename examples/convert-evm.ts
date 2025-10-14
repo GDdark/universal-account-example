@@ -23,6 +23,8 @@ config();
     const transaction = await universalAccount.createConvertTransaction({
         expectToken: { type: SUPPORTED_TOKEN_TYPE.USDC, amount: '0.0001' },
         chainId: CHAIN_ID.ARBITRUM_MAINNET_ONE,
+    }, {
+        usePrimaryTokens: [SUPPORTED_TOKEN_TYPE.USDT]
     });
 
     console.log('convert transaction', transaction);

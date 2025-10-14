@@ -8,8 +8,8 @@ config();
     const wallet = new Wallet(process.env.PRIVATE_KEY || '');
     const universalAccount = new UniversalAccount({
         projectId: process.env.PROJECT_ID || '',
-        projectClientKey: process.env.PROJECT_CLIENT_KEY || "",
-        projectAppUuid: process.env.PROJECT_APP_UUID || "",
+        projectClientKey: process.env.PROJECT_CLIENT_KEY || '',
+        projectAppUuid: process.env.PROJECT_APP_UUID || '',
         ownerAddress: wallet.address,
         tradeConfig: {
             universalGas: true,
@@ -20,10 +20,15 @@ config();
     console.log('Your UA EVM Address:', smartAccountOptions.smartAccountAddress);
     console.log('Your UA Solana Address:', smartAccountOptions.solanaSmartAccountAddress);
 
-    const transaction = await universalAccount.createConvertTransaction({
-        expectToken: { type: SUPPORTED_TOKEN_TYPE.USDC, amount: '0.0001' },
-        chainId: CHAIN_ID.SOLANA_MAINNET,
-    });
+    const transaction = await universalAccount.createConvertTransaction(
+        {
+            expectToken: { type: SUPPORTED_TOKEN_TYPE.USDC, amount: '0.0001' },
+            chainId: CHAIN_ID.SOLANA_MAINNET,
+        },
+        {
+            usePrimaryTokens: [SUPPORTED_TOKEN_TYPE.USDT],
+        },
+    );
 
     console.log('convert transaction', transaction);
 
