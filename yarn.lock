@@ -107,10 +107,10 @@
   resolved "https://registry.yarnpkg.com/@noble/hashes/-/hashes-1.7.2.tgz#d53c65a21658fb02f3303e7ee3ba89d6754c64b4"
   integrity sha512-biZ0NUSxyjLLqo6KxEJ1b+C2NAx0wtDoFvCaXHGgUkeHzf3Xc1xKumFKREuT7f7DARNZ/slvYUwFG6B0f2b6hQ==
 
-"@particle-network/universal-account-sdk@1.0.5":
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/@particle-network/universal-account-sdk/-/universal-account-sdk-1.0.5.tgz#abd9663af659aa90cd1e2adb4cef40b2c60195d9"
-  integrity sha512-K9YjNEhkxPs/Ov7npCMH25EFvXAlQFyQOoWI8lH9zpXZleaFcJi9tJn5247uUqimdZJdFq/zffK/x12mbzNq5w==
+"@particle-network/universal-account-sdk@1.0.6":
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/@particle-network/universal-account-sdk/-/universal-account-sdk-1.0.6.tgz#d864adccdbd5c28246dcba6119591ab49396cdd0"
+  integrity sha512-PmTsO/wKLf0n2WWsL9wa9QrfP+R2yQP07RhZH5rnEpwxAG4EdU19yGgCuVZfChm3oepAFBJMixFf0SNJZ7HB6g==
   dependencies:
     "@coral-xyz/anchor" "^0.30.1"
     "@noble/hashes" "^1.7.1"
